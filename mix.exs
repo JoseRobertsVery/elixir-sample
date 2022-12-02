@@ -15,7 +15,7 @@ defmodule Issues.MixProject do
         "coveralls.html": :test,
         "coveralls.post": :test,
         "coveralls.detail": :test,
-        coveralls: :test,
+        coveralls: :test
       ],
       deps: deps()
     ]
