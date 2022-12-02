@@ -10,6 +10,13 @@ defmodule Issues.MixProject do
       name: "Issues",
       source_url: "https://github.com/JoseRobertsVery/elixir-sample",
       start_permanent: Mix.env() == :prod,
+      test_coverage: [tool: ExCoveralls],
+      preferred_cli_env: [
+        "coveralls.html": :test,
+        "coveralls.post": :test,
+        "coveralls.detail": :test,
+        coveralls: :test,
+      ],
       deps: deps()
     ]
   end
@@ -30,7 +37,8 @@ defmodule Issues.MixProject do
       {:httpoison, "~> 1.0.0"},
       {:poison, "~> 3.1"},
       {:ex_doc, "~>0.19.1"},
-      {:earmark, "~> 1.2.4"}
+      {:earmark, "~> 1.2.4"},
+      {:excoveralls, "~> 0.15.0", only: :test}
     ]
   end
 

@@ -7,4 +7,4 @@ config :issues,
   github_token: System.get_env("GITHUB_TOKEN")
 
 config :logger,
-  compile_time_purge_level: :info
+  level: :info
