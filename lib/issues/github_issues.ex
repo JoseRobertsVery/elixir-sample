@@ -6,10 +6,13 @@ defmodule Issues.GithubIssues do
     table of the last _n_ issues in a github project
     """
 
+    require Logger
+
     @user_agent [{"User-Agent", "Elixir Issues"}]
-    @github_url Application.get_env(:issues, :github_url)
+    @github_url Application.compile_env(:issues, :github_url, :error)
 
     def fetch(user, project) do
+        Logger.info("Fetching issues for #{user}/#{project}")
         issues_url(user, project)
         |> HTTPoison.get(@user_agent)
         |> handle_response
@@ -20,6 +23,8 @@ defmodule Issues.GithubIssues do
     end
 
     def handle_response({_, %{status_code: status_code, body: body}}) do
+        Logger.info("Response status code: #{status_code}")
+        Logger.debug(fn -> inspect(body) end)
         {
             status_code |> check_for_error(),
             body |> Poison.Parser.parse!()
