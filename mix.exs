@@ -8,7 +8,7 @@ defmodule Issues.MixProject do
       version: "0.1.0",
       elixir: "~> 1.14.2",
       name: "Issues",
-      source_url: "",
+      source_url: "https://github.com/JoseRobertsVery/elixir-sample",
       start_permanent: Mix.env() == :prod,
       deps: deps()
     ]
@@ -29,6 +29,7 @@ defmodule Issues.MixProject do
       {:credo, "~> 1.6", only: [:dev, :test], runtime: false},
       {:httpoison, "~> 1.0.0"},
       {:poison, "~> 3.1"},
+      {:ex_doc, "~>0.19.1"},
       {:earmark, "~> 1.2.4"}
     ]
   end
